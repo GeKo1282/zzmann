@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install Wiki</title>
+    
+    <script src="files/script/root.js"></script>
+
+    <link rel="stylesheet" href="files/style/root.css">
+    <link rel="stylesheet" href="files/style/article.css">
+</head>
+<body>
+    <div id="topbar">
+        <div class="logo">
+            <span class="start">W</span><span class="mid">iki</span><span class="end">pedia</span>
+        </div>
+
+        <div class="button-panel">
+            <div class="button" onclick="window.href='#'">
+                <div class="label">Home</div>
+            </div>
+            <div class="button" onmouseenter="show_submenu('windows', event)">
+                <div class="label">Windows</div>
+                <div class="submenu" id="topbar-windows-submenu">
+                    <div class="menu-button">Windows Desktop</div>
+                    <div class="spacer"></div>
+                    <div class="menu-button">Windows Server</div>
+                </div>
+            </div>
+            <div class="button" onmouseenter="show_submenu('linux', event)">
+                <div class="label">Linux</div>
+                <div class="submenu" id="topbar-linux-submenu">
+                    <div class="menu-button">Debian based Linux</div>
+                    <div class="spacer"></div>
+                    <div class="menu-button">Non-debian based Linux</div>
+                </div>
+            </div>
+            <div class="button" onclick="window.href='#'">
+                <div class="label">Downloads</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="page" id="home-page"></div>
+        <div class="page shown" id="windows-desktop-page">
+            <div class="header-block">
+                <div class="index">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
+                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
+                            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu"></div>
+                </div>
+                <div class="label">
+                    Poradnik Instalacji Systemów z rodziny Windows
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="text">Ten dokument jest poradnikiem do instalacji systemu Windows Server z użyciem obrazu dysku wypalonego na bootowalny dysk przenośny z oficjalnego obrazu instalacyjnego dostarczonego przez Microsoft.
+                <br/>
+                <br/>
+                Przykłady kodu mogą zawierać tekst zastępczy (sformatowany <div class="code"><span class="replace">kursywą</span></div>), który musi zostać ręcznie zastąpiony odpowiednimi wartościami.
+                <br/>
+                <br/>
+                Ten poradnik jest zwięzły i zaleca się postępować zgodnie z instrukcjami w podanej kolejności poszczególnych sekcji.
+                <br/>
+                <br/>
+                Instalacja systemu Windows Server nie wymaga połączenia z internetem, jako że wszystkie pliki zawarte są w obrazie instalatora, jednak jeśli zajdzie potrzeba dostępu do internetu w tym poradniku założono, że dostępe jest działające połączenie internetowe.
+                </div>
+
+                <div class="section">
+                    <div class="header">Pre-instalacja</div>
+
+                    <div class="subsection">
+                        <div class="header">Zdobywanie obrazu systemu</div>
+
+                        <div class="paragraph">
+                            Obraz dysku może zostać pozyskany z oficjalnej strony <a class="external" href="https://www.microsoft.com/">Microsoft</a> i jest to jedyne zalecane źródło obrazu. Aby pobrać obraz systemu należy udać się na <a class="external" href="https://www.microsoft.com/en-us/software-download/">stronę pobierania</a>, wybrać odpowiednią wersję systemu, a następnie pobrać Media Creation Tool, które to pozwoli nam zapisać obraz najnowszej wersji systemu lub zapisać instalator na dysk przenośny.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Przygotowanie medium instalacyjengo</div>
+
+                        <div class="note-block">Jeśli została wybrana opcja bezpośredniej instalacji na nośnik USB w kroku 1.1, ten krok zostaje pominięty.
+                        </div>
+
+                        <div class="paragraph">Pobrany obraz ISO należy nagrać na dysk przenośny lub optyczny i zrobić go bootowalnym, aby móc uruchomić instalator. Zalecaną metodą jest użycie programu <a class="external" href="https://rufus.ie/">Rufus</a>.</div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Uruchomienie instalatora</div>
+
+                        <div class="paragraph">1. Skieruj bieżące urządzenie rozruchowe w ustawieniach BIOS/UEFI na to, na które został nagrany instalator systemu Windows. Zazwyczaj jest to osiągnięte przez naciśnięcie odpowiedniego klawisza na klawiaturze w fazie POST. Szczegółowe informacje można znaleźć w instrukcji płyty głównej.</div>
+
+                        <div class="paragraph">2. Zostaniesz przekierowany do menu instalacyjnego systemu Windows.</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="header">Instalacja</div>
+
+                    <div class="subsection">
+                        <div class="header">Interfejs Graficzny</div>
+                    
+                        <div class="paragraph"></div>
+
+                        <div class="minisection">
+                            <div class="header">Wybór języka</div>
+
+                            <div class="paragraph">Po uruchomieniu instalatora zostanie zaprezentowany ekran wyboru języka instalatora, języka zainstalowanego systemu oraz języka wprowadzania. Należy wybrać odpowiednie ustawienia i nacisnąć przycisk "Dalej", a następnie "Zainstaluj teraz".</div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Wprowadzenie klucza systemu</div>
+
+                            <div class="paragraph">Kolejny zaprezentowany ekran poprosi nas o wprowadzenie klucza. Jeśli takowy klucz posiadamy, należy wpisać go we wskazane pole i nacisnąć przycisk "Dalej". Jeśli nie, wybrać opcję "Nie mam klucza produktu".</div>
+
+                            <div class="note-block">Jeśli klucz produktu nie zostanie wprowadzony, można zrobić to w czasie późniejszym po zakończeniu instalacji. Jeśli jednak klucz nie zostanie wprowadzony, system będzie funkcjonował normalnie, z restrykcją do trybu Trial.
+                            </div>
+                        </div>
+
+                        
+                        <div class="minisection">
+                            <div class="header">Wybór wersji systemu</div>
+
+                            <div class="paragraph">Jeśli obraz został pobrany z oficjalnej strony dystrybutora, ekran wyboru wersji pozwoli wybrać nam wersję:
+                                <ul class="bold">
+                                    <li>Home</li>
+                                    <li>Home N</li>
+                                    <li>Education</li>
+                                    <li>Education N</li>
+                                    <li>Pro</li>
+                                    <li>Pro N</li>
+                                    <li>Enterprise</li>
+                                    <li>Eneterprise N</li>
+                                </ul>
+
+                                <div class="tip-block">
+                                    Wersja <span class="bold">N</span> systemu Windows nie zawiera aplikacji do odtwarzania mediów, takich jak Windows Media Player, Skype, Muzyka, Obrazy itd.
+                                </div>
+
+                                Należy wybrać pożądaną wersję i nacisnąć przycisk "Dalej".
+                            </div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Wybór sposobu instalacji</div>
+                            <div class="paragraph">
+                                Następujący ekran przedstawia wybór pomiędzy:
+
+                                <ul class="bold">
+                                    <li>Zainstaluj system Windows i zachowaj pliki, ustawienia i aplikacje</li>
+                                    <li>Zainstaluj tylko system Windows</li>
+                                </ul>
+
+                                Jeśli chcemy zachować wszystkie pliki komputera poza plikami systemu windows, należy wybrać pierwszą opcję, w innym wypadku - drugą, a następnie nacisnąć przycisk "Dalej".
+                            </div>
+
+                            <div class="note-block">Jeśli instalujesz system windows po raz pierwszy na danej maszynie, pomiń ten krok i wybierz opcję "Zainstaluj tylko system Windows".</div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Partycjonowanie dysków</div>
+                            <div class="paragraph">
+                                Dyski, bedące podłączone do komputera w trakcie uruchomienia instalatora ukażą się teraz jako dostępne do partycjonowania. Najprostszy układ partycji to jedna partycja na system i jest to zalecany sposób instalacji, jako że nowsze dyski nie zyskują na dodatkowych partycjach na dane. Aby stworzyć taki układ partycji należy usunąć wszystkie istniejące partycje, a następnie kliknąć "Dalej". System sam utworzy partycje potrzebne do instalacji systemu.
+                            </div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Kopiowanie i instalacja plików systemu</div>
+
+                            <div class="paragraph">
+                                System sam przejdzie teraz przez proces kopiowania plików i instalacji systemu, a następnie zrestartuje się i uruchomi nowy system.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Konsola</div>
+
+                        <div class="warning-block">
+                            Ta sekcja jest przeznaczona tylko dla systemów działających na <span class="bold">UEFI</span>.
+                        </div>
+
+                        <div class="tip-block">
+                            W instalatorze systemu windows konsola jest uruchamiana za pomocą kombinacji klawiszy <div class="key">Shift</div> + <div class="key">F10</div>.
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Partycjonowanie dysków</div>
+
+                            <div class="paragraph">
+                                W celu uruchomienia narzędzia do partycjonowania dysków należy uruchomić narzędzie diskpart:
+
+                                <div class="code-block">
+                                    <pre>X:\sources>diskpart</pre>
+                                    <br>
+                                    <pre>DISKPART> </pre>
+                                </div>
+
+                                Po uruchomieniu należy wybrać odpowiedni dysk:
+
+                                <div class="code-block">
+                                    <pre>DISKPART> sel dis 0</pre>
+                                    <br>
+                                    <pre>Disk 0 is now the selected disk.</pre>
+                                </div>
+
+                                <div class="note-block">
+                                    W celu znalezienia numeru dysku w wypadku więcej niż jednego dysku w systemie można użyć komendy <div class="code">DISKPART> lis dis</div>.
+                                </div>
+
+                                Jeśli dysk zawierał do tej pory dane, należy go wyczyścić.
+
+                                <div class="code-block">
+                                    <pre>DISKPART> clean</pre>
+                                    <br>
+                                    <pre>DiskPart succeeded in clearing the disk.</pre>
+                                </div>
+
+                                Jeśli dysk nie jest jeszcze w formacie GPT, lub nie jesteś pewny, należy go do takiego przekonwertować:
+
+                                <div class="code-block">
+                                    <pre>DISKPART> conv gpt</pre>
+                                    <br>
+                                    <pre>DiskPart successfully converted the disk to GPT format.</pre>
+                                </div>
+
+                                Następnie należy utworzyć i sformatować odpowiednie partycje, a także nadać im litery dysków. W tym przykładzie utworzono partycję EFI o rozmiarze 512MB w formacie fat32 z literą <span class="code">W:</span> oraz partycję systemową na reszcie dysku w formacie ntfs z literą <span class="code">S:</span>.
+
+                                <div class="code-block">
+                                    <pre>DISKPART> cre par efi size=512</pre>
+                                    <br>
+                                    <pre>DiskPart succeeded in creating the specified partition.</pre>
+                                    <br>
+                                    <pre>DISKPART> form fs=fat32 quick</pre>
+                                    <br>
+                                    <pre>   100 percent completed.</pre>
+                                    <br>
+                                    <pre>DiskPart successfully formatted the volume.</pre>
+                                    <br>
+                                    <pre>DISKPART> ass letter W</pre>
+                                    <br>
+                                    <pre>DiskPart successfully assigned the drive letter or mount point.</pre>
+                                    <br>
+                                    <pre>DISKPART> cre par pri</pre>
+                                    <br>
+                                    <pre>DiskPart succeeded in creating the specified partition.</pre>
+                                    <br>
+                                    <pre>DISKPART> form fs=ntfs quick</pre>
+                                    <br>
+                                    <pre>   100 percent completed.</pre>
+                                    <br>
+                                    <pre>DiskPart successfully formatted the volume.</pre>
+                                    <br>
+                                    <pre>DISKPART> ass letter S</pre>
+                                    <br>
+                                    <pre>DiskPart successfully assigned the drive letter or mount point.</pre>
+                                </div>
+
+                                Przed opuszczeniem narzędzia diskpart należy sprawdzić, czy partycje zostały poprawnie utworzone i przypisano im poprawne litery oraz zanotować literę dysku instalatora:
+
+                                <div class="code-block">
+                                    <pre>DISKPART> lis vol</pre>
+                                    <br>
+                                    <pre>Volume ###  Ltr  Label          Fs      Type        Size      Status     Info</pre>
+                                    <pre>----------  ---  -------------  ------  ----------  --------  ---------  --------</pre>
+                                    <pre>Volume 0     D   CCSA_X64FRE    UDF     DVD-ROM     4041 MB   Healthy</pre>
+                                    <pre>Volume 1     W                  FAT32   Partition   512 MB    Healthy    System </pre>
+                                    <pre>Volume 2     S                  NTFS    Partition   40 GB     Healthy</pre>
+                                    <br>
+                                    <pre>DISKPART> exit</pre>
+                                    <br>
+                                    <pre>Leaving diskpart...</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Wybór wersji systemu</div>
+
+                            <div class="paragraph">
+                                Aby wybrać wersję systemu należy nawigować się do katalogu <span class="code"><span class="replace">D</span>:\sources</span>, gdzie litera dysku powinna być zastąpiona wcześniej zanotowaną literą dysku instalatora, a następnie wykonać polecenie:
+
+                                <div class="code-block">
+                                    <pre>D:\sources>dism /Get-ImageInfo /ImageFile:install.wim</pre>
+                                </div>
+
+                                Komenda ta powinna zwrócić (zależnie od rodzaju obrazu) jednen lub więcej bloków jak następujący:
+
+                                <div class="code-block">
+                                    <pre>Index : 1</pre>
+                                    <pre>Name : Windows 10 Home</pre>
+                                    <pre>Description : Windows 10 Home</pre>
+                                    <pre>Size : 14,450,220,209  bytes</pre>
+                                </div>
+
+                                Należy wybrać wersję i zanotować jej index, a następnie wgrać obraz wybranej wersji systemu na dysk systemowy:
+
+                                <div class="code-block">
+                                    <pre>D:\sources>dism /Apply-Image /Image-File:install.wim /Index:<span class="replace">1</span> /ApplyDir:S:</pre>
+                                    <br>
+                                    <pre>Deployment Image Servicing and Managment tool</pre>
+                                    <pre>Version: 10.0.19041.1</pre>
+                                    <br>
+                                    <pre>Applying image</pre>
+                                    <pre>[================================100.0%================================]</pre>
+                                </div>
+
+                                Po zakończeniu system jest zainstalowany.
+                            </div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Tworzenie plików bootloadera</div>
+
+                            <div class="paragraph">
+                                W celu uruchomienia systemu należy utworzyć jeszcze pliki bootloadera na partycji systemowej w następujący sposób:
+
+                                <div class="code-block">
+                                    <pre>D:\sources>bcdboot <span class="replace">S</span>:\Windows /s <span class="replace">W</span>:</pre>
+                                    <pre>Boot files suceessfully created.</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="minisection">
+                            <div class="header">Ponowne uruchomienie komputera</div>
+
+                            <div class="paragraph">
+                                Na tym etapie system jest gotowy do pierwszego uruchomienia, zostaje więc tylko zrestartować komputer:
+
+                                <div class="code-block">
+                                    D:\sources>wpeutil reboot
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <div class="header">Pierwsze uruchomienie systemu</div>
+                    <br>
+                    <div class="paragraph">Po pierwszym uruchomieniu ekran OOBE (Out Of the Box Expirence) przeprowadzi przez konfigurację systemu.</div>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="windows-server-page">
+            
+        </div>
+        <div class="page" id="linux-debian-page"></div>
+        <div class="page" id="linux-debiant-page"></div>
+        <div class="page" id="downloads-page"></div>
+    </div>
+</body>
+</html>
