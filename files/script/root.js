@@ -25,3 +25,9 @@ function show_submenu(menu_name) {
         menu.classList.remove("shown");
     }
 }
+
+function switch_page(page_name) {
+    Array.from(document.getElementById("content").getElementsByClassName("shown")).forEach((page) => {page.classList.remove("shown");});
+
+    document.getElementById(`${page_name}-page`).classList.add("shown");
+}

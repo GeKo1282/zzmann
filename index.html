@@ -1,3 +1,5 @@
+<!--UP UNTIL 14.12.2024 ==> zosiapzs2@wp.pl-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,28 +25,29 @@
             <div class="button" onmouseenter="show_submenu('windows', event)">
                 <div class="label">Windows</div>
                 <div class="submenu" id="topbar-windows-submenu">
-                    <div class="menu-button">Windows Desktop</div>
+                    <div class="menu-button" onclick="switch_page('windows-desktop')">Windows Desktop</div>
                     <div class="spacer"></div>
-                    <div class="menu-button">Windows Server</div>
+                    <div class="menu-button" onclick="switch_page('windows-server')">Windows Server</div>
                 </div>
             </div>
             <div class="button" onmouseenter="show_submenu('linux', event)">
                 <div class="label">Linux</div>
                 <div class="submenu" id="topbar-linux-submenu">
-                    <div class="menu-button">Debian based Linux</div>
+                    <div class="menu-button" onclick="switch_page('linux-debiant')">Standardowy Linux</div>
                     <div class="spacer"></div>
-                    <div class="menu-button">Non-debian based Linux</div>
+                    <div class="menu-button" onclick="switch_page('linux-debian')">Linux bazowany na debianie</div>
                 </div>
             </div>
             <div class="button" onclick="window.href='#'">
-                <div class="label">Downloads</div>
+                <div class="label" onclick="switch_page('downloads')">Downloads</div>
             </div>
         </div>
     </div>
 
     <div id="content">
         <div class="page" id="home-page"></div>
-        <div class="page shown" id="windows-desktop-page">
+
+        <div class="page" id="windows-desktop-page">
             <div class="header-block">
                 <div class="index">
                     <div class="icon">
@@ -64,7 +67,7 @@
             </div>
 
             <div class="article">
-                <div class="text">Ten dokument jest poradnikiem do instalacji systemu Windows Server z użyciem obrazu dysku wypalonego na bootowalny dysk przenośny z oficjalnego obrazu instalacyjnego dostarczonego przez Microsoft.
+                <div class="paragraph">Ten dokument jest poradnikiem do instalacji systemu Windows z użyciem obrazu dysku wypalonego na bootowalny dysk przenośny z oficjalnego obrazu instalacyjnego dostarczonego przez Microsoft.
                 <br/>
                 <br/>
                 Przykłady kodu mogą zawierać tekst zastępczy (sformatowany <div class="code"><span class="replace">kursywą</span></div>), który musi zostać ręcznie zastąpiony odpowiednimi wartościami.
@@ -73,7 +76,7 @@
                 Ten poradnik jest zwięzły i zaleca się postępować zgodnie z instrukcjami w podanej kolejności poszczególnych sekcji.
                 <br/>
                 <br/>
-                Instalacja systemu Windows Server nie wymaga połączenia z internetem, jako że wszystkie pliki zawarte są w obrazie instalatora, jednak jeśli zajdzie potrzeba dostępu do internetu w tym poradniku założono, że dostępe jest działające połączenie internetowe.
+                Instalacja systemu Windows nie wymaga połączenia z internetem, jako że wszystkie pliki zawarte są w obrazie instalatora, jednak jeśli zajdzie potrzeba dostępu do internetu w tym poradniku założono, że dostępe jest działające połączenie internetowe.
                 </div>
 
                 <div class="section">
@@ -354,11 +357,182 @@
                 </div>
             </div>
         </div>
+
         <div class="page" id="windows-server-page">
             
         </div>
+
+        <div class="page shown" id="linux-debiant-page">
+            <div class="header-block">
+                <div class="index">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zM3 3H2v1h1z"/>
+                            <path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1z"/>
+                            <path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5zM2 7h1v1H2zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm1 .5H2v1h1z"/>
+                        </svg>
+                    </div>
+
+                    <div class="menu"></div>
+                </div>
+                <div class="label">
+                    Poradnik Instalacji Systemów z rodziny GNU/Linux
+                    <span></span>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="paragraph">Ten dokument jest poradnikiem do instalacji systemu z rodziny GNU/Linux z użyciem obrazu dysku wypalonego na bootowalny dysk przenośny z oficjalnego obrazu instalacyjnego dostarczonego przez dystrybutora systemu.
+                    <br/>
+                    <br/>
+                    Ze względu na różnice w procesie instalacji specyficznych dystrybucji systemu Linux, ten poradnik przedstawia sposób instalacji systemu <a href="https://archlinux.org">Arch Linux</a>, jednak większość z technik zastosowanych w poniższym dokumencie bezpośrednio przenosi się na inne dystrybucje.
+                    <br/>
+                    <br/>
+                    Przykłady kodu mogą zawierać tekst zastępczy (sformatowany <div class="code"><span class="replace">kursywą</span></div>), który musi zostać ręcznie zastąpiony odpowiednimi wartościami.
+                    <br/>
+                    <br/>
+                    Ten poradnik jest zwięzły i zaleca się postępować zgodnie z instrukcjami w podanej kolejności poszczególnych sekcji.
+                    <br/>
+                    <br/>
+                    Instalacja systemu Arch Linux wymaga połączenia z internetem, w tym pradniku założono więc, że dostępe jest działające połączenie internetowe.
+                    <br/>
+                    <br/>
+                    W razie niejasności działania poszczególnych poleceń należy odnieść się do manpages (pl. strony instruckji) za pomocą komendy <span class="code">man <span class="replace">komenda</span></span>.
+                    <br>
+                    <br>
+                    System <a href="https://archlinux.org">Arch Linux</a> powinien uruchomić się na każdym komputerze kompatybilnym z x86_64 z minimum 512MiB ramu, jednak do uruchmienia obrazu instalatora wymagane jest więcej ramu. Podstawowa instalacja powinna zająć mniej niż 2GiB przestrzeni dyskowej.
+                </div>
+
+                <div class="section">
+                    <div class="header">Pre-instalacja</div>
+
+                    <div class="subsection">
+                        <div class="header">Zdobywanie obrazu systemu</div>
+
+                        <div class="paragraph">
+                            Obraz dysku powinien zostać pozyskany z <a href="https://archlinux.org/download/">oficjalnej strony pobierania Arch Linux</a>.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Przygotowanie medium instalacyjengo</div>
+
+                        <div class="paragraph">Obraz ISO może zostać dostarczony do maszyny docelowej za pomocą dysku USB, dysku optycznego lub za pomocą PXE.</div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Uruchomienie instalatora</div>
+
+                        <div class="paragraph">1. Skieruj bieżące urządzenie rozruchowe w ustawieniach BIOS/UEFI na to, na które został nagrany instalator systemu Arch Linux. Zazwyczaj jest to osiągnięte przez naciśnięcie odpowiedniego klawisza na klawiaturze w fazie POST. Szczegółowe informacje można znaleźć w instrukcji płyty głównej.</div>
+
+                        <div class="paragraph">2. Kiedy na ekranie pojawi się boot menu instalatora, wybierz opcję <i>Arch Linux install medium</i> i naciśnij przycisk <span class="key">Enter</span> aby wejść do środowiska instalacyjnego.</div>
+ 
+                        <div class="paragraph">3. Zostaniesz zalogowany do pierwszej konsoli wirtualnej (tty1) jako użytkownik root i uruchomiona zostanie konsola Zsh.</div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Weryfikacja trybu bootowania</div>
+
+                        <div class="paragraph">
+                            W celu weryfikacji trybu bootowania należy sprawdzić bitowość systemu UEFI:
+
+                            <div class="code-block">
+                                # cat /sys/firmware/efi/fw_platform_size
+                            </div>
+
+                            Jeśli polecenie zwróci wartość <span class="code">64</span>, system zostanie uruchomiony w trybie UEFI i będzie miał 64-bitową wersję UEFI x64. Jeśli polecenie zwróci <span class="code">32</span> system zostanie uruchomiony w trybie UEFI i będzie miał 32-bitowy interfejs IA32 UEFI; chociaż jest to obsługiwane, ograniczy wybór modułu ładującego do systemd-boot i GRUB. Jeśli plik nie istnieje, system może zostać uruchomiony w trybie BIOS (lub CSM). Jeśli system nie uruchomił się w żądanym trybie (UEFI vs BIOS), zapoznaj się z instrukcją obsługi płyty głównej.
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Ustanowienie połączenia z internetem</div>
+
+                        <div class="paragraph">
+                            W celu ustanowienia połączenia z internetem w środowisku instalatora wykonaj następujące kroki:
+                            <ul>
+                                <li>
+                                    Upewnij się że interfejs sieciowy którego masz zamiar użyć jest wykryty i włączony, na przykład za pomocą <a>ip-link(8)</a>:
+
+                                    <div class="code-block">
+                                        # ip link
+                                    </div>
+                                </li>
+
+                                <li>
+                                    Dla kart bezprzewodowych i WWAN, upewnij się że karta nie jest zablokowana za pomocą <a>rfkill</a>
+                                </li>
+
+                                <li>
+                                    Połącz się z siecią:
+                                    <ul style="list-style: circle;">
+                                        <li>Ethernet - podłącz kabel</li>
+                                        <li>WiFi - uwierzytelnij się za pomocą <a>iwctl</a></li>
+                                        <li>Modem sieci mobilnej - połącz się z siecią mobilną za pomocą <a>mmcli</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    Skonfiguruj połączenie sieciowe:
+                                    <ul style="list-style: circle;">
+                                        <li><a>DHCP</a>: dynamiczne przypisywanie adresu IP i serwerów DNS (dostarczane przez <a>systemd-networkd</a> i <a>systemd-resolved</a>) powinny działać bez dodatkowej konfiguracji dla Ethernetu, WLAN i WWAN.</li>
+                                        <li>Statyczne adresy IP: należy skonfigurować ręcznie.</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    Połączenie może zostać zweryfikowane za pomocą narzędzia <a>ping</a>:
+                                    <div class="code-block">
+                                        # ping archlinux.org
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Uaktualnienie zegara systemowego</div>
+
+                        <div class="article">
+                            W środowisku instalacyjnym serwis <a>systemd-timesyncd</a> jest domyślnie uruchomiony i czas zostanie automatycznie zsynchronizowany w momencie ustanowienia połączenia z internetem.
+                            <br>
+                            <br>
+                            W celu zweryfikowania czy zegar systemowy jest zsynchronizowany można użyć polecenia:
+                            <div class="code-block">
+                                # timedatectl
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subsection">
+                        <div class="header">Partycjonowane dysków</div>
+
+                        <div class="article">
+                            <div class="paragraph"> 
+                                Kiedy system rozpozna dysk, jest on przypisany jako <a>urządzenie blokowe</a>, takie jak <span class="code">/dev/sda</span>, <span class="code">/dev/nvme0n1</span> czy <span class="code">/dev/mmcblk0</span>.
+                                W celu identyfikacji tych urządzeń należy użyć <a>lsblk</a> lub <a>fdisk</a>:
+                                <div class="code-block">
+                                    # fdisk -l
+                                </div>
+                                Rezulataty zakończone <span class="code">rom</span>, <span class="code">loop</span> or <span class="code">airootfs</span> mogą zostać zignorowane. Urządzenia <span class="code">mmcblk*</span> zakończone <span class="code">rpbm</span>, <span class="code">boot0</span> i <span class="code">boot1</span> mogą zostać zignorowane.
+
+                                <div class="note-block">
+                                    Jeśli dysk się nie pojawia, upewnij się że kontroler nie jest w trybie RAID.
+                                </div>
+                                
+                                <div class="tip-block">
+                                    Upewnij się, że Twoje dyski NVMe używają <a href="">optymalnego rozmiaru sektora logicznego</a> przed partycjonowaniem.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                
+                
+                </div>
+            </div>
+        </div>
         <div class="page" id="linux-debian-page"></div>
-        <div class="page" id="linux-debiant-page"></div>
         <div class="page" id="downloads-page"></div>
     </div>
 </body>

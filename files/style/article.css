@@ -4,6 +4,10 @@
     pointer-events: none;
 }
 
+#content {
+    position: relative;
+}
+
 .page > * {
     pointer-events: inherit !important;
 }
@@ -11,6 +15,9 @@
 .page {
     counter-set: section-header 0;
     margin-top: 10px;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .page > .header-block {
@@ -44,7 +51,9 @@
     padding: 10px;
     border: 1px solid gray;
     background: var(--article-background);
-    line-height: 130%;
+    font-size: 100%;
+    line-height: 150%;
+    width: 100%;
 }
 
 .article .bold {
